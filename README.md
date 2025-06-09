@@ -1,6 +1,6 @@
 # MergeSort em C#
 
-Este projeto implementa o algoritmo **MergeSort** em linguagem C# como parte da disciplina **Análise e Complexidade de Algoritmos**.
+Este trabalho visa implementar o algoritmo **MergeSort** em linguagem C# como parte da disciplina **Análise e Complexidade de Algoritmos**.
 
 ## 📌 Objetivo
 

@@ -4,7 +4,7 @@ Este trabalho tem como objetivo implementar o algoritmo **MergeSort** em linguag
 
 ## 📌 Objetivo
 
-Demonstrar a implementação do algoritmo de ordenação MergeSort, explicando seu funcionamento por meio de código comentado e bem estruturado.
+Demonstrar a implementação do algoritmo de ordenação MergeSort, explicando seu funcionamento por meio de código comentado, bem estruturado e com métricas de desempenho (ações e tempo).
 
 ---
 
@@ -31,9 +31,18 @@ O MergeSort é um algoritmo de ordenação baseado no paradigma **Dividir e Conq
 
 - `OrdenarMetade`: Função recursiva que divide o array e chama `UnirMetades` para juntar e ordenar.
 - `UnirMetades`: Junta duas metades já ordenadas em uma única sequência ordenada.
-- `Main`: Inicializa o array e exibe o resultado da ordenação.
+- `Main`: Inicializa o array, mede o tempo e conta o número de operações realizadas.
 
-### Exemplo de entrada:
+---
+
+## ⚙️ Métricas Adicionais
+
+- 🧮 **Total de ações realizadas**: Cada comparação e cópia é contabilizada.
+- ⏱️ **Tempo de execução**: Medido em milissegundos com precisão de 3 casas decimais, usando `Stopwatch`.
+
+---
+
+## 🧪 Exemplo de entrada
 
 ```csharp
 int[] array = { 85, 12, 3, 99, 4, 27, 65, 32, 19, 87, 11, 45, 67, 23, 9, 56, 74, 31, 98, 13 };

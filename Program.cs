@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace MergeSort
 {
     internal class Program
     {
+        static long acoes = 0;
         static void OrdenarMetade(int[] array, int inicio, int fim)
         {
             if (inicio < fim)
@@ -51,13 +53,16 @@ namespace MergeSort
 
             while (e < n1 && d < n2)   // Enquanto houver elementos em AMBAS as metades
             {
+                acoes++;
                 if (esquerda[e] <= direita[d])  // Se o elemento da esquerda for menor ou igual
                 {
                     array[o++] = esquerda[e++]; // Copia da esquerda e avança ambos índices (o e e)
+                    acoes++;
                 }
                 else   // Se o elemento da direita for menor
                 {
                     array[o++] = direita[d++];  // Copia da direita e avança ambos índices(o e d)
+                    acoes++;
                 }
             }
 
@@ -65,26 +70,36 @@ namespace MergeSort
 
             while (e < n1)
                 array[o++] = esquerda[e++];
+                acoes++;
 
             // Terceiro loop: Copia os elementos restantes da metade direita (se houver)
 
             while (d < n2)
                 array[o++] = direita[d++];
-
+                acoes++;
         }
 
-//Passo a passo do merge:
-//Compara 3 e 4 → Copia 3 → Array: [3, ?, ?, ?]
-//Compara 8 e 4 → Copia 4 → Array: [3, 4, ?, ?]
-//Compara 8 e 7 → Copia 7 → Array: [3, 4, 7, ?]
-//Acabou a direita → Copia o 8 que sobrou → Array final: [3, 4, 7, 8]
-            static void Main()
-            {
-                int[] array = { 85, 12, 3, 99, 4, 27, 65, 32, 19, 87, 11, 45, 67, 23, 9, 56, 74, 31, 98, 13 };
-                OrdenarMetade(array, 0, array.Length - 1);
-                Console.WriteLine("MergeSort: " + string.Join(", ", array));
-            }
+        //Passo a passo do merge:
+        //Compara 3 e 4 → Copia 3 → Array: [3, ?, ?, ?]
+        //Compara 8 e 4 → Copia 4 → Array: [3, 4, ?, ?]
+        //Compara 8 e 7 → Copia 7 → Array: [3, 4, 7, ?]
+        //Acabou a direita → Copia o 8 que sobrou → Array final: [3, 4, 7, 8]
+        static void Main()
+        {
+            int[] array = { 85, 12, 3, 99, 4, 27, 65, 32, 19, 87, 11, 45, 67, 23, 9, 56, 74, 31, 98, 13 };
+            // Cria um cronômetro para medir o tempo de execução do MergeSort
+            Stopwatch cronometro = new Stopwatch();
+            cronometro.Start(); // Inicia a contagem do tempo
+
+            OrdenarMetade(array, 0, array.Length - 1); // Chamada principal do algoritmo
+
+            cronometro.Stop(); // Para a contagem do tempo
+
+            Console.WriteLine("MergeSort: " + string.Join(", ", array));
+            Console.WriteLine("Total de ações realizadas: " + acoes);
+
+            // Mostra o tempo em milissegundos (10^-3 segundos)
+            Console.WriteLine("Tempo decorrido: " + cronometro.Elapsed.TotalMilliseconds.ToString("F3") + " milissegundos");
         }
     }
-    
-
+}
